@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main() {
+int opcionComputadora;
+int numeroaleatorio;
+char opcion;
+
+
+do  {
+srand(time(NULL));
+numeroaleatorio = rand() % 3;
+printf("Elija entre PIEDRA (P), papel(K) o tijera(T)\n");
+printf("Ingrese X para salir del programa\n");
+scanf (" %c", &opcion);
+
+switch (opcion) {
+case 'P':
+case 'p':
+    printf("Usted eligio piedra\n\n");
+
+    if (numeroaleatorio == 0)
+    printf("La computadora eligio piedra, hubo empate!\n\n");
+
+    else if
+     (numeroaleatorio == 1)
+    printf("La computadora eligio papel, usted pierde!\n\n");
+
+    else
+    printf("La computadora eligio tijera, usted gana!\n\n");
+        break;
+
+case 'K':
+case 'k':
+    printf("Usted eligio papel\n\n");
+
+    if (numeroaleatorio == 0)
+    printf("La computadora eligio piedra, usted gano!\n\n");
+
+    else if
+     (numeroaleatorio == 1)
+    printf("La computadora eligio papel, hubo empate!\n\n");
+
+    else
+    printf("La computadora eligio tijera, usted pierde!\n\n");
+        break;
+
+        case 'T':
+        case 't':
+    printf("Usted eligio Tijera\n\n");
+
+    if (numeroaleatorio == 0)
+    printf("La computadora eligio piedra, usted perdio!\n\n");
+
+    else if
+     (numeroaleatorio == 1)
+    printf("La computadora eligio papel, usted gano!\n\n");
+
+    else
+    printf("La computadora eligio tijera, hubo empate!\n\n");
+        break;
+
+        case 'X':
+        case 'x':
+        printf("Saliendo del juego...\n\n");
+        break;
+
+     default:
+    printf("Seleccione el caracter indicado\n\n");
+
+
+
+
+
+}
+} while (opcion != 'X' && opcion != 'x');
+
+
+return 0;
+
+}
