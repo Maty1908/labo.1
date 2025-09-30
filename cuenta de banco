@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+   int saldo=10000;
+   int opcion;
+   float monto;
+   printf("Su saldo actual es de 10000\n\n");
+   do {
+   printf ("1----------DEPOSITAR-----------\n\n");
+   printf("2-----------RETIRAR--------------\n\n");
+   printf("3--------CONSULTAR SALDO-------\n\n");
+   printf("4------------SALIR-------------\n\n");
+   printf("--------Seleccione una opcion----\n\n");
+   scanf ("%d", &opcion);
+
+
+   switch(opcion) {
+
+   case 1:
+
+       printf("Ingrese el monto a depositar\n\n");
+       scanf ("%f", &monto);
+       saldo= saldo + monto;
+       printf ("Excelente, su nuevo saldo actualmente es %d\n\n", saldo);
+       break;
+
+   case 2:
+
+       printf("Ingrese el monto a retirar\n\n");
+       scanf ("%f", &monto);
+       if   (monto > saldo){
+       printf("No tiene fondos suficientes\n\n");
+       }else{
+       saldo = saldo - monto;
+       printf ("Su saldo actualmente es %d\n\n", saldo);
+       }
+       break;
+
+   case 3:
+
+        printf("Su saldo actual es %d\n\n", saldo);
+        break;
+
+   case 4:
+        printf("Saliendo del programa...\n\n");
+        break;
+
+    default:
+    printf("Opcion Invalida, Seleccione otra variable\n\n");
+
+}
+}while (opcion != 4);
+
+return 0;
+}
