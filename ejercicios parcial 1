@@ -1,0 +1,146 @@
+//Ejercicio 1:
+
+#include <stdio.h>
+
+int main() {
+    int legajo, nota, totalLegajos = 0;
+    char grado;
+
+    float sumaA, sumaB;
+    int cantA, cantB;
+    float mayorProm = -1;
+    int anioMayor = 0;
+    char gradoMayor = ' ';
+
+    // Procesar 7 años
+    for (int i = 1; i <= 7; i++) {
+        sumaA = sumaB = 0;
+        cantA = cantB = 0;
+
+        printf("=== Anio %d ===\n", i);
+        printf("Ingrese legajo (0 para terminar): ");
+        scanf("%d", &legajo);
+
+        while (legajo != 0) {
+            printf("Grado (A/B): ");
+            scanf(" %c", &grado);
+            printf("Nota (1-10): ");
+            scanf("%d", &nota);
+
+            if (grado == 'A' || grado == 'a') {
+                sumaA += nota;
+                cantA++;
+            } else if (grado == 'B' || grado == 'b') {
+                sumaB += nota;
+                cantB++;
+            }
+
+            totalLegajos++;
+
+            printf("Ingrese legajo (0 para terminar): ");
+            scanf("%d", &legajo);
+        }
+
+        // Mostrar promedios del año
+        float promA = (cantA > 0) ? sumaA / cantA : 0;
+        float promB = (cantB > 0) ? sumaB / cantB : 0;
+
+        printf("(*) Anio %d - promedio general:\n", i);
+        printf("A = %.2f\n", promA);
+        printf("B = %.2f\n\n", promB);
+
+        // Guardar mayor promedio
+        if (promA > mayorProm) {
+            mayorProm = promA;
+            anioMayor = i;
+            gradoMayor = 'A';
+        }
+        if (promB > mayorProm) {
+            mayorProm = promB;
+            anioMayor = i;
+            gradoMayor = 'B';
+        }
+    }
+
+    printf("Total de legajos procesados: %d\n", totalLegajos);
+    printf("Mayor promedio: %.2f en anio %d grado %c\n", mayorProm, anioMayor, gradoMayor);
+
+    return 0;
+}
+
+
+
+
+//Ejercicio 2:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    char usuario;
+    int opcionComputadora;
+
+    srand(time(NULL)); // Inicializar generador de números aleatorios
+    opcionComputadora = rand() % 3; // 0: Piedra, 1: Papel, 2: Tijera
+
+    printf("Elija (I = Piedra, A = Papel, T = Tijera): ");
+    scanf(" %c", &usuario);
+
+    printf("Usuario eligió: ");
+    if (usuario == 'I') printf("Piedra\n");
+    else if (usuario == 'A') printf("Papel\n");
+    else if (usuario == 'T') printf("Tijera\n");
+
+    printf("Computadora eligió: ");
+    if (opcionComputadora == 0) printf("Piedra\n");
+    else if (opcionComputadora == 1) printf("Papel\n");
+    else printf("Tijera\n");
+
+    // Determinar ganador
+    if ((usuario == 'I' && opcionComputadora == 2) ||
+        (usuario == 'A' && opcionComputadora == 0) ||
+        (usuario == 'T' && opcionComputadora == 1)) {
+        printf("¡Ganaste!\n");
+    } else if ((usuario == 'I' && opcionComputadora == 1) ||
+               (usuario == 'A' && opcionComputadora == 2) ||
+               (usuario == 'T' && opcionComputadora == 0)) {
+        printf("Perdiste.\n");
+    } else {
+        printf("Empate.\n");
+    }
+
+    return 0;
+}
+
+
+
+//ejercicio 3:
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char cadena[100];
+    printf("Ingrese una cadena (maximo 100 caracteres): ");
+    fgets(cadena, 100, stdin);
+
+    // Reemplazar cada letra
+    for (int i = 0; cadena[i] != '\0'; i++) {
+        if (cadena[i] >= 'a' && cadena[i] <= 'z') {
+            if (cadena[i] == 'z')
+                cadena[i] = 'a';
+            else
+                cadena[i]++;
+        } else if (cadena[i] >= 'A' && cadena[i] <= 'Z') {
+            if (cadena[i] == 'Z')
+                cadena[i] = 'A';
+            else
+                cadena[i]++;
+        }
+    }
+
+    printf("Cadena modificada: %s\n", cadena);
+
+    return 0;
+}
