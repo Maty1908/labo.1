@@ -1,0 +1,123 @@
+//Ejercicio 1:
+
+#include <stdio.h>
+
+int main() {
+    int grupos;
+    printf("Ingrese la cantidad de grupos a procesar: ");
+    scanf("%d", &grupos);
+
+    int totalClientes = 0;
+    float totalGeneral = 0;
+    float maxFacturacion = -1;
+    char claseMax = ' ';
+
+    for (int g = 1; g <= grupos; g++) {
+        float factX = 0, factY = 0, factZ = 0;
+        int clientesX = 0, clientesY = 0, clientesZ = 0;
+        char clase;
+
+        printf("\n--- Procesando Grupo %d ---\n", g);
+
+        printf("Ingrese clase del cliente (X=radio, Y=television, Z=redes, F=fin): ");
+        scanf(" %c", &clase);
+
+        while (clase != 'F' && clase != 'f') {
+            float importe;
+            printf("Ingrese importe facturado: ");
+            scanf("%f", &importe);
+
+            if (clase == 'X' || clase == 'x') {
+                factX += importe;
+                clientesX++;
+            } else if (clase == 'Y' || clase == 'y') {
+                factY += importe;
+                clientesY++;
+            } else if (clase == 'Z' || clase == 'z') {
+                factZ += importe;
+                clientesZ++;
+            }
+
+            totalClientes++;
+            totalGeneral += importe;
+
+            printf("Ingrese clase del cliente (X=radio, Y=television, Z=redes, F=fin): ");
+            scanf(" %c", &clase);
+        }
+
+        printf("\nGrupo %d - Facturacion:\n", g);
+        printf("X: %.2f, %d clientes\n", factX, clientesX);
+        printf("Y: %.2f, %d clientes\n", factY, clientesY);
+        printf("Z: %.2f, %d clientes\n", factZ, clientesZ);
+
+        // Buscar la clase que facturó más
+        if (factX > maxFacturacion) { maxFacturacion = factX; claseMax = 'X'; }
+        if (factY > maxFacturacion) { maxFacturacion = factY; claseMax = 'Y'; }
+        if (factZ > maxFacturacion) { maxFacturacion = factZ; claseMax = 'Z'; }
+    }
+
+    printf("\n=== Resumen General ===\n");
+    printf("Total de clientes: %d\n", totalClientes);
+    printf("Clase con mayor facturacion: %c con %.2f\n", claseMax, maxFacturacion);
+    printf("Facturacion total general: %.2f\n", totalGeneral);
+
+    return 0;
+}
+
+*/
+
+//Ejercicio 2
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int numero_generado, intento, i;
+    srand(time(NULL));
+    numero_generado = rand() % 100 + 1; // número entre 1 y 100
+
+    printf("Pense un numero entre 1 y 100. Adivinalo \n");
+
+    for (i = 1; i <= 3; i++) {
+        printf("Intento %d: ", i);
+        scanf("%d", &intento);
+
+        if (intento == numero_generado) {
+            printf("Felicidades! Adivinaste el numero, sos UN ANIMAL\n");
+            return 0;
+        } else if (intento < numero_generado) {
+            printf("El numero ingresado es menor al numero generado.\n");
+        } else {
+            printf("El numero ingresado es mayor al numero generado.\n");
+        }
+    }
+
+    printf("Lo lamentamos, has perdido. El numero era %d.\n", numero_generado);
+    return 0;
+}
+
+
+//Ejercicio 3:
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char cadena[200];
+    printf("Ingrese una cadena: ");
+    fgets(cadena, 200, stdin);
+
+    for (int i = 0; cadena[i] != '\0'; i++) {
+        if (cadena[i] == 'a' || cadena[i] == 'e' || cadena[i] == 'i' ||
+            cadena[i] == 'o' || cadena[i] == 'u' ||
+            cadena[i] == 'A' || cadena[i] == 'E' || cadena[i] == 'I' ||
+            cadena[i] == 'O' || cadena[i] == 'U') {
+            cadena[i] = ' ';
+        }
+    }
+
+    printf("Cadena modificada: %s\n", cadena);
+
+    return 0;
+}
