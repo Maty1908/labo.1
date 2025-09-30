@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char cadena[150];
+    int numero;
+
+    printf("ingrese el numero que quieres que avance cada letra: ");
+    scanf("%d", &numero);
+    getchar();
+
+    printf("Ingrese una cadena (maximo 150 caracteres): ");
+    fgets(cadena, sizeof(cadena), stdin);
+
+    for (int i = 0; cadena[i] != '\0'; i++) {
+        if (cadena[i] >= 'a' && cadena[i] <= 'z') {
+            cadena[i] = ((cadena[i] - 'a' + numero) % 26) + 'a';
+        } else if (cadena[i] >= 'A' && cadena[i] <= 'Z') {
+            cadena[i] = ((cadena[i] - 'A' + numero) % 26) + 'A';
+        }
+    }
+    printf("Cadena modificada: %s\n", cadena);
+    return 0;
+}
