@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+    int TotalTazasemanal = 0;
+    float TotalPlataTotal = 0;
+    float monto = 0;
+    int cantidad;
+
+    for (int i = 0; i < 7; i++) {
+        int dia = i+1;
+        int TotalTazasxdia= 0;
+        float TotalMontoxdia= 0;
+        char opcion;
+
+        printf("--------MENU-------- DIA %d\n",dia);
+
+do  {
+
+        printf("---- COMPRAR CAFE GRANDE (G) $1500----\n");
+        printf("---- COMPRAR UN CAFE MEDIANO (M) $1000----\n");
+        printf("----COMPRAR UN CAFE CHICO (C) $500----\n");
+        printf("Ingrese X para terminar el dia\n");
+        scanf(" %c", &opcion);
+
+        switch (opcion) {
+
+case 'G':
+case 'g':
+        printf("Ingrese la cantidad de cafes grandes que quiere\n");
+        scanf("%d",&cantidad);
+        printf("Ingrese el precio del cafe\n");
+        scanf("%f", &monto);
+        TotalTazasxdia += cantidad;
+        TotalMontoxdia += cantidad * monto;
+        break;
+
+case 'M':
+case 'm':
+        printf("Ingrese la cantidad de cafes medianos que quiere\n");
+        scanf("%d",&cantidad);
+        printf("Ingrese el precio del cafe\n");
+        scanf("%f", &monto);
+        TotalTazasxdia += cantidad;
+        TotalMontoxdia += cantidad * monto;
+        break;
+
+case 'C':
+case 'c':
+        printf("Ingrese la cantidad de cafes chicos que quiere\n");
+        scanf("%d",&cantidad);
+        printf("Ingrese el precio del cafe\n");
+        scanf("%f", &monto);
+        TotalTazasxdia += cantidad;
+        TotalMontoxdia += cantidad * monto;
+        break;
+
+default:
+    printf("Opcion invalida, seleccione otro caracter\n");
+
+ }
+
+
+    }while (opcion != 'X');
+
+         printf("Dia finalizado...\n"); i+1;
+         printf("Cantidad de tazas vendidas %d\n", TotalTazasxdia);
+         printf("Total de dinero recaudado: %2.f\n", TotalMontoxdia);
+
+
+     TotalTazasemanal += TotalTazasxdia;
+     TotalPlataTotal  += TotalMontoxdia;
+
+if
+
+
+}
+     printf("=====RESUMEN SEMANAL======\n\n");
+     printf("Total de cafes vendidos %d\n\n", TotalTazasemanal);
+     printf ("Total de dinero recaudado %2.f\n\n",TotalPlataTotal);
+ 
+
+return 0;
+}
