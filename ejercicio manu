@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+int numero_secreto, intento, i;
+int numero_max = 50, numero_min = 1;
+int intentos = 5;
+
+srand(time(NULL));
+numero_secreto = (rand() % (numero_max - numero_min + 1)) + numero_min;
+
+printf("=== Juego: Adivina el numero oculto ===\n");
+printf("Debes adivinar un numero entre 1 y 50.\n");
+printf("Tienes 5 intentos como maximo.\n\n");
+
+for (i = 1; i <= intentos; i++) {
+printf("Intento %d: Ingresa un numero: ", i);
+scanf("%d", &intento);
+
+if (intento == numero_secreto) {
+printf("¡Felicitaciones! Adivinaste el numero secreto: %d\n", numero_secreto);
+return 0;
+}
+
+// si está a 1 de distancia
+if (intento == numero_secreto + 1 || intento == numero_secreto - 1) {
+printf("¡Muy muy cerca! Estas a 1 del numero.\n");
+i--; // no cuenta este intento
+}
+// si está a 5 o menos de distancia
+else if ((intento >= numero_secreto - 5 && intento <= numero_secreto - 2) ||
+(intento <= numero_secreto + 5 && intento >= numero_secreto + 2)) {
+printf("Estas muy cerca!\n");
+}
+else if (intento > numero_secreto) {
+printf("El numero oculto es menor.\n");
+}
+else {
+printf("El numero oculto es mayor.\n");
+}
+}
+
+printf("\nLo siento, te quedaste sin intentos. El numero secreto era: %d\n", numero_secreto);
+return 0;
+}
