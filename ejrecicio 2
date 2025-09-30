@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int aleatorio;
+    int intento;
+    int intentos = 0;
+    int diferencia;
+
+    srand(time(NULL));
+    aleatorio = rand() % 50;
+
+    printf("adivina un numero entre 1 y 50.\n");
+    printf("Tienes 5 intentos maximos.\n");
+
+    while (intentos < 5) {
+        printf("Intento %d de 5\n", intentos + 1);
+        printf("Ingrese un numero: ");
+        scanf("%d", &intento);
+
+        if (intento == aleatorio) {
+            printf("Felicitaciones Adivinaste el numero secreto (%d).\n", aleatorio);
+            return 0;
+        }
+
+        diferencia = (aleatorio - intento);
+
+        if (diferencia == 1) {
+            printf("Muy pero muy cerca Estas a 1 de distancia. No pierdes intento.\n");}
+        else {
+            intentos++;
+            if (intento > aleatorio) {
+                printf("El numero ingresado es mayor.\n");}
+            else {
+                printf("El numero ingresado es menor.\n");}
+
+            if (diferencia <= 5) {
+                printf("Estas muy cerca de adivinarlo\n");}
+
+            printf("Te quedan %d intentos.\n", 5 - intentos);}
+    }
+
+
+    printf("Lo siento, te quedaste sin intentos. El numero secreto era: %d\n", aleatorio);
+
+    return 0;
+}
